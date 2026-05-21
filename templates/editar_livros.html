@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadSpace - Editar Livro</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="header">
+        <div class="container nav-container">
+                <img src="/static/assets/img/logo.png" class="logo">
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/livros">Livros</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- FORMULÁRIO -->
+
+    <section class="page-section">
+
+        <div class="container">
+
+            <div class="form-container admin-form">
+
+                <div class="section-title">
+                    <span>Administrador</span>
+                    <h2>Editar Livro</h2>
+                </div>
+
+                <form action="/livros/admin/alterar/{{ livro[0] }}" method="post" enctype="multipart/form-data">
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Título do Livro</label>
+                            <input type="text" name="titulo" class="form-control" value="{{ livro[1] }}">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Autor</label>
+                            <input type="text" name="autor" class="form-control" value="{{ livro[2] }}">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Gênero</label>
+                            <input type="text" name="categoria" class="form-control" value="{{ livro[3] }}">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Descrição</label>
+                            <input type="text" name="descricao" class="form-control" value="{{ livro[4] }}">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+                            <label>Ano</label>
+                            <input type="text" name="ano_publicacao" class="form-control" value="{{ livro[7] }}">
+                        </div>
+
+                        <div class="mb-3">
+                          <label class="form-label d-block">Capa atual</label>
+                          {% if livro[5] %}
+                            <img src="/static/assets/img/livros/{{ livro[5] }}" alt="{{ livro[1] }}" style="width: 140px; height: 140px; object-fit: cover; border-radius: 10px;">
+                          {% else %}
+                            <span>Sem capa cadastrada</span>
+                          {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                          <label class="form-label">Nova capa</label>
+                          <input type="file" name="foto" class="form-control" accept="image/*">
+                        </div>
+
+                        <div class="form-check mb-4">
+                          <input type="checkbox" name="ativo" class="form-check-input" id="ativo"
+                                 {% if livro[6] %}
+                                 checked
+                                 {% endif %}>
+                          <label class="form-check-label" for="ativo">Livro ativo</label>
+                        </div>
+
+                    </div>
+                <div class="mb-3">
+                      <label class="form-label">Descrição</label>
+                      <textarea name="descricao" class="form-control" rows="5">{{ livro[4] }}</textarea>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                      <button type="submit" class="btn btn-primary">Atualizar</button>
+                      <a href="/livros/admin" class="btn btn-secondary">Voltar</a>
+                    </div>
+               </form>
+
+            </div>
+
+        </div>
+
+    </section>
+<footer class="footer">
+    <div class="container footer-container">
+
+        <div class="footer-logo">
+            <h2>ReadSpace</h2>
+            <p>
+                Sua biblioteca digital interativa.
+                Explore livros, organize leituras e descubra novos mundos.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Navegação</h3>
+
+            <ul>
+                <li><a href="/">Página Inicial</a></li>
+                <li><a href="/livros">Livros</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contato</h3>
+
+            <p>Email: contato@readspace.com</p>
+            <p>Telefone: (34) 99999-9999</p>
+            <p>Iturama - MG</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            © 2026 ReadSpace - Todos os direitos reservados.
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>
